@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
 try {
     $stmt = $conn->query("SELECT * FROM events");
     $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode(['status' => 'success', 'data' => $events]);
+    echo json_encode(['status' => 'success', 'data' => $events, 'message' => 'Events retrieved successfully']);
 } catch (PDOException $e) {
     error_log("Read events failed: " . $e->getMessage(), 3, '/path/to/error.log');
     http_response_code(500); // Internal Server Error
